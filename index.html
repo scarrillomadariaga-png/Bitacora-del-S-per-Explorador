@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitácora del Súper Explorador</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="pagina activa" id="pagina-inicio">
+        <!--fondo inicio-->
+        <div class="fondo-inicio">
+            <img src="imagenes/pregunta-instrucciones.png" alt="Icono-ayuda" class="boton-simbolo"
+                onclick="mostrarseccion()" title="El Manual del Súper Explorador">
+            <!--seccion manual-->
+            <div id="seccion-manual" class="seccion-oculta-manual">
+                <div class="contenido-manual">
+                    <button class="boton-cerrar" onclick="ocultarseccion()">&times;</button>
+                    <h1> El Manual del Súper Explorador</h1>
+                    <div class="contenedor-manual"> </div>
+                    <!--botones manual-->
+                    <div class="botones-manual" id="botones-manual">
+                        <button class="boton-manual" onclick="showTab(1)">¡Elige tu Ruta!</button>
+                        <button class="boton-manual" onclick="showTab(2)">¡Explora y Aprende!</button>
+                        <button class="boton-manual" onclick="showTab(3)">¡Supera el Desafío!</button>
+                        <button class="boton-manual" onclick="showTab(4)">¡Gana tu insignia!</button>
+                    </div>
+                </div>
+                <!--contenedor manual-->
+                <div class="contenedor-manual">
+                    <div id="tab1" class="indicaciones">
+                        <h2>¡Elige tu ruta!</h2>
+                        <p>Verás un mapa de Colombia con 6 caminos. Cada camino es una región especial. ¡Toca la que
+                            quieras explorar primero!</p>
+                        <button class="back-btn" onclick="goBack()">←</button>
+                    </div>
+                    <div id="tab2" class="indicaciones">
+                        <h2>¡Explora y Aprende!</h2>
+                        <p>En cada región, encontrarás videos, fotos y juegos divertidos. ¡Presta mucha atención para no
+                            perderte ningún secreto!</p>
+                        <p>Aprenderás sobre sus animales, plantas, paisajes y la gente que vive allí.</p>
+                        <button class="back-btn" onclick="goBack()">←</button>
+                    </div>
+                    <div id="tab3" class="indicaciones">
+                        <h2>¡Supera el Desafío!</h2>
+                        <p>Cuando termines de explorar una región, habrá un pequeño juego o una pregunta. ¡Es tu
+                            oportunidad para demostrar cuánto aprendiste!</p>
+                        <button class="back-btn" onclick="goBack()">←</button>
+                    </div>
+                    <div id="tab4" class="indicaciones">
+                        <h2>¡Gana tu insignia!</h2>
+                        <p>Si superas el desafío, ¡ganarás una insignia para tu bitácora! Colecciona las 6 insignias
+                            para ser un Gran Súper Explorador de Colombia.</p>
+                        <button class="back-btn" onclick="goBack()">←</button>
+                    </div>
+                </div>
+            </div>
+            <!--contenendor inicio-->
+            <div class="contenedor-inicio">
+                <h1>Bitácora del </h1>
+                <h1>Super</h1>
+                <h1>Explorador</h1>
+                <h2>Descubre las riquezas de cada región</h2>
+                <button class="boton-inicio" onclick="irAPagina('pagina-avatar')"> Iniciar</button>
+            </div>
+        </div>
+    </div>
+    <!--pagina avatar-->
+    <div class="pagina" id="pagina-avatar">
+        <div class="fondo-avatar">
+            <img src="imagenes/home.png" alt="Icono-casa" class="boton-home" onclick="irAPagina('pagina-inicio')"
+                title="Volver al inicio"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-inicio')" title="Retroceder"></button>
+            <div class="creacion-avatar">
+                <h1>¡Crea tu avatar!</h1>
+                <p>Elige cómo quieres verte en tu aventura</p>
+                <!--avatares-->
+                <div class="avatar-grid">
+                    <div class="avatar-circulo"><img src="imagenes/avatar1.png"></div>
+                    <div class="avatar-circulo"><img src="imagenes/avatar2.png"></div>
+                    <div class="avatar-circulo"><img src="imagenes/avatar3.png"></div>
+                    <div class="avatar-circulo"><img src="imagenes/avatar4.png"></div>
+                    <div class="avatar-circulo"><img src="imagenes/avatar5.png"></div>
+                    <div class="avatar-circulo"><img src="imagenes/avatar6.png"></div>
+                    <div class="avatar-circulo"><img src="imagenes/avatar7.png"></div>
+                    <div class="avatar-circulo"><img src="imagenes/avatar8.png"></div>
+                    <div class="avatar-circulo"><img src="imagenes/avatar9.png"></div>
+                </div>
+                <input type="text" id="nombre" placeholder="Escribe tu Nombre Aquí">
+                <button class="boton-avatar" onclick="comenzarAventura('pagina-bienvenida')">Preparado</button>
+
+            </div>
+        </div>
+    </div>
+    <!---pagina bienvenida-->
+    <div class="pagina" id="pagina-bienvenida">
+        <div class="fondo-bienvenida">
+            <img src="imagenes/home.png" alt="Icono-casa" class="boton-home" onclick="irAPagina('pagina-inicio')"
+                title="Volver al inicio"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-avatar')" title="Retroceder"></button>
+            <div class="bienvenida">
+                <h1>¡Bienvenido a tu Bitácora del Explorador!</h1>
+                <h2>Explorador(a)<span id="nombre-usuario"></span>
+                    <img id="avatar-usuario" alt="Avatar del explorador"
+                        style="width:130px; border-radius:50%; margin:20px auto; display:block;">
+                    <p>
+                        Ponte tu sombrero de aventura y prepara tus ojos, porque vamos a despegar en un viaje increíble
+                        por
+                        Colombia.
+                        Aquí, explorarás sus 6 regiones, conocerás animales fantásticos y descubrirás paisajes que te
+                        dirán:
+                        "¡WOW!" </p>
+                    <p>¿Tu misión? ¡Explorar, aprender y ganar las 3 insignias!</p>
+                    <p>¡La aventura de la naturaleza te espera!</p>
+                    <button class="boton-bienvenida" onclick="irAPagina('pagina-presentacion-unidad-1')">¡Comienza la
+                        aventura!</button>
+            </div>
+        </div>
+    </div>
+    <!--pagina presentacion unidad 1-->
+    <div class="pagina" id="pagina-presentacion-unidad-1">
+        <div class="fondo-presentacion-unidad-1">
+            <img src="imagenes/home.png" alt="Icono-casa" class="boton-home" onclick="irAPagina('pagina-inicio')"
+                title="Volver al inicio"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-bienvenida')" title="Retroceder"></button>
+            <div class="contenedor-presentacion-unidad-1">
+                <div class="cuadro-superior-presentacion-unidad-1">
+                    <h1>Unidad 1</h1>
+                    <h2>Regiones de Colombia</h2>
+                </div>
+                <div class="contenedor-tarjetas-presentacion-unidad-1">
+                    <!-- Tarjeta 1 unidad 1 -->
+                    <div class="card-container-presentacion-unidad-1" onclick="flipCard('card-tematicas-unidad-1')">
+                        <div class="card" id="card-tematicas-unidad-1">
+                            <div class="card-face card-front">
+                                <div class="card-title">Temáticas</div>
+                                <div class="flip-hint">👆 Click para voltear</div>
+                            </div>
+                            <div class="card-face card-back">
+                                <div class="card-description">
+                                    <p>-¿Qué es una región natural?</p>
+                                    <p>-Las seis regiones de Colombia.</p>
+                                    <p>-Cómo hablamos y nos expresamos en diferentes regiones (acentos, palabras
+                                        típicas)</p>
+                                </div>
+                                <div class="flip-hint">👆 Click para regresar</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tarjeta 2 unidad 1 -->
+                    <div class="card-container-presentacion-unidad-1" onclick="flipCard('card-objetivos-unidad-1')">
+                        <div class="card" id="card-objetivos-unidad-1">
+                            <div class="card-face card-front">
+                                <div class="card-title">Objetivos de aprendizaje</div>
+                                <div class="flip-hint">👆 Click para voltear</div>
+                            </div>
+                            <div class="card-face card-back">
+                                <div class="card-description">
+                                    <p>-Comprender el concepto de región natural.</p>
+                                    <p>-Reconocer las seis regiones de Colombia en el mapa.</p>
+                                    <p>-Valorar la diversidad natural y cultural del país.</p>
+                                </div>
+                                <div class="flip-hint">👆 Click para regresar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="boton-presentacion-unidad-1" onclick="irAPagina('pagina-cuento')">Iniciar</button>
+            </div>
+        </div>
+    </div>
+    <!--pagina cuento-->
+    <div id="pagina-cuento" class="pagina">
+        <div class="fondo-cuento">
+            <img src="imagenes/home.png" alt="Icono-casa" class="boton-home" onclick="irAPagina('pagina-inicio')"
+                title="Volver al inicio"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-presentacion-unidad-1')" title="Retroceder"></button>
+            <div style="position:relative;padding-top:0;width:700px;height:400px;"><iframe
+                    style="position:absolute;border:none;width:100%;height:100%;left:0;top:0;"
+                    src="https://online.fliphtml5.com/zdook/iaxg/" seamless="seamless" scrolling="no" frameborder="0"
+                    allowtransparency="true" allowfullscreen="true"></iframe></div>
+            <button class="boton-cuento" onclick="irAPagina('pagina-quiz-cuento')">Resuelve el quiz</button>
+        </div>
+    </div>
+    </div>
+    <!--pagina quiz cuento-->
+    <div id="pagina-quiz-cuento" class="pagina">
+        <div class="fondo-quiz-cuento">
+            <img src="imagenes/home.png" alt="Icono-casa" class="boton-home" onclick="irAPagina('pagina-inicio')"
+                title="Volver al inicio"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-cuento')" title="Retroceder"></button>
+            <iframe id="JotFormIFrame-252929001489664" title="Quiz" onload="window.parent.scrollTo(0,0)"
+                allowtransparency="true" allow="geolocation; microphone; camera; fullscreen; payment"
+                src="https://form.jotform.com/252929001489664" frameborder="0" scrolling="yes">
+            </iframe>
+            <button class="boton-quiz-cuento" onclick="irAPagina('pagina-video')">Continuar</button>
+        </div>
+    </div>
+    <!--pagina video-->
+    <div id="pagina-video" class="pagina">
+        <div class="fondo-video">
+            <img src="imagenes/home.png" alt="Icono-casa" class="boton-home" onclick="irAPagina('pagina-inicio')"
+                title="Volver al inicio"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-quiz-cuento')" title="Retroceder"></button>
+            <div style="width:90%;max-width: 700px;display:flex;flex-direction:column;gap:8px;min-height:80vh;"><iframe
+                    src="https://wayground.com/embed/quiz/68f83486e344613ed8de4fed" title=" - Wayground" style="flex:1;"
+                    frameBorder="0" allowfullscreen></iframe>
+            </div>
+            <button class="boton-video" onclick="irAPagina('pagina-acentos')">Explorar</button>
+        </div>
+    </div>
+    <!--pagina acentos-->
+    <div id="pagina-acentos" class="pagina">
+        <div class="fondo-acentos">
+            <img src="imagenes/home.png" alt="Icono-casa" class="boton-home" onclick="irAPagina('pagina-inicio')"
+                title="Volver al inicio"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-quiz-cuento')" title="Retroceder"></button>
+            <div style="position: fixed; top: 10%; left: 10%; width: 70%; height: 80%; z-index: 10;">
+                <iframe title="¿Cómo hablamos y nos expresamos en diferentes regiones?" frameborder="0"
+                    style="width: 100%; height: 80%; border: none; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);"
+                    src="https://view.genially.com/68ef996eb32f660959c7a43e" type="text/html" allowscriptaccess="always"
+                    allowfullscreen="true" scrolling="yes" allownetworking="all">
+                </iframe>
+            </div>
+            <button class="boton-acentos" onclick="irAPagina('pagina-frases-tipicas')">¡Sigamos explorando!</button>
+        </div>
+    </div>
+    <!--pagina frases tipicas-->
+    <div id="pagina-frases-tipicas" class="pagina">
+        <div class="fondo-frases-tipicas">
+            <img src="imagenes/home.png" alt="Icono-casa" class="boton-home" onclick="irAPagina('pagina-inicio')"
+                title="Volver al inicio"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-acentos')" title="Retroceder"></button>
+            <div id="contenedor-video">
+                <div id="video-placeholder">
+                    <img src="imagenes/miniatura.png" alt="Haz clic para reproducir" id="thumbnail">
+                    <button id="play-button">▶ Reproducir video</button>
+                </div>
+                <iframe id="youtube-video" width="560" height="315"
+                    src="https://www.youtube.com/embed/_oSmiKED8ig?enablejsapi=1" title="Video educativo"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen style="display:none;">
+                </iframe>
+            </div>
+            <button class="boton-frases-tipicas" onclick="irAPagina('pagina-quiz-frases-acentos')">¡Comenzar el
+                quiz!</button>
+        </div>
+    </div>
+    <!--pagina quiz frases acentos-->
+    <div class="pagina" id="pagina-quiz-frases-acentos">
+        <div class="fondo-quiz-frases-acentos">
+            <img src="imagenes/home.png" alt="Icono-casa" class="boton-home" onclick="irAPagina('pagina-inicio')"
+                title="Volver al inicio"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-frases-tipicas')" title="Retroceder"></button>
+            <div style="max-width: 795px; margin: 0 auto; padding: 20px;">
+                <iframe allow="fullscreen; autoplay;" allowfullscreen width="100%" height="440px" frameborder="0"
+                    src="https://es.educaplay.com/juego/26275054-juego_de_palabras_y_regiones_de_colombia.html"
+                    style="display: block;">
+                </iframe>
+            </div>
+            <button class="boton-quiz-frases-acentos" onclick="irAPagina('pagina-menu-principal')">Siguiente</button>
+        </div>
+    </div>
+    <!--pagina menu principal-->
+    <div class="pagina" id="pagina-menu-principal">
+        <div class="fondo-menu-principal">
+            <img src="imagenes/home.png" alt="Icono-casa" class="boton-home" onclick="irAPagina('pagina-inicio')"
+                title="Volver al inicio"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-quiz-frases-acentos')" title="Retroceder"></button>
+            <img src="imagenes/boton-progreso.png" alt="Ver progreso" class="boton-progreso"
+                onclick="abrirSeccionProgreso()" title="Ver mi progreso">
+            <div class="contenedor-menu-principal">
+                <div class="info-box-menu">
+                    <h1>Unidades de Aprendizaje</h1>
+                    <p>Completa cada unidad para desbloquear la siguiente</p>
+                </div>
+                <div class="nivel-card desbloqueado" id="nivel-unidad-2" style="top: 120px; left: 430px;">
+                    <img src="imagenes/ruta-2-insignias-bloqueada.png" class="insignia bloqueada">
+                    <img src="imagenes/ruta-2-insignias-desbloqueada.png" class="insignia desbloqueada"
+                        onclick="iniciarNivel('pagina-presentacion-unidad-2')">
+                </div>
+                <!-- Nivel 2: bloqueado al inicio -->
+                <div class="nivel-card" id="nivel-unidad-3" style="top: 260px; left: 540px;">
+                    <img src="imagenes/ruta-3-insignias-bloqueada.png" class="insignia bloqueada">
+                    <img src="imagenes/ruta-3-insignias-desbloqueada.png" class="insignia desbloqueada"
+                        onclick="iniciarNivel('pagina-presentacion-unidad-3')">
+                </div>
+                <!-- Nivel 3: bloqueado al inicio -->
+                <div class="nivel-card" id="nivel-unidad-4" style="top: 400px; left: 770px;">
+                    <img src="imagenes/ruta-4-insignias-bloqueada.png" class="insignia bloqueada">
+                    <img src="imagenes/ruta-4-insignias-desbloqueada.png" class="insignia desbloqueada"
+                        onclick="iniciarNivel('pagina-presentacion-unidad-4')">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- SECCIÓN OCULTA DE PROGRESO -->
+    <div id="seccion-progreso-oculta" class="seccion-progreso-oculta">
+        <div class="fondo-oscuro-progreso" onclick="cerrarSeccionProgreso()"></div>
+
+        <div class="contenedor-modal-progreso">
+            <!-- Botón cerrar -->
+            <button class="boton-cerrar-modal-progreso" onclick="cerrarSeccionProgreso()">&times;</button>
+
+            <!-- Cartel con nombre -->
+            <div class="cartel-nombre-modal">
+                <h1 id="titulo-progreso-modal">Mi diario de expedición y logros</h1>
+            </div>
+            <!-- Contenido -->
+            <div class="contenido-modal-progreso">
+                <!-- Avatar grande -->
+                <div class="seccion-avatar-modal">
+                    <div class="circulo-avatar-modal">
+                        <img id="avatar-modal-progreso" src="" alt="Avatar">
+                    </div>
+                    <div class="nombre-explorador-modal" id="nombre-modal-progreso">Explorador</div>
+                </div>
+
+                <!-- Insignias y barra -->
+                <div class="seccion-insignias-modal">
+                    <!-- 3 Insignias -->
+                    <div class="contenedor-insignias-modal">
+                        <div class="circulo-insignia-modal" id="insignia-modal-1">
+                            <img src="imagenes/ruta-2-insignias-bloqueada.png" alt="Insignia 2 Bloqueada"
+                                style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="circulo-insignia-modal" id="insignia-modal-2">
+                            <img src="imagenes/ruta-3-insignias-bloqueada.png" alt="Insignia 3 Bloqueada"
+                                style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="circulo-insignia-modal" id="insignia-modal-3">
+                            <img src="imagenes/ruta-4-insignias-bloqueada.png" alt="Insignia 4 Bloqueada"
+                                style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                    </div>
+                    <!-- Barra de progreso -->
+                    <div class="contenedor-barra-modal">
+                        <div class="etiqueta-barra-modal">
+                            <span>Progreso Total:</span>
+                            <span id="porcentaje-modal-texto">0%</span>
+                        </div>
+                        <div class="barra-fondo-modal">
+                            <div class="barra-relleno-modal" id="barra-modal-relleno"></div>
+                            <div class="estrella-barra-modal">⭐</div>
+                        </div>
+                    </div>
+
+                    <!-- Información adicional -->
+                    <div class="info-unidades-modal">
+                        <div class="unidad-info-item">
+                            <span class="unidad-numero" id="unidades-completadas-modal">1</span>
+                            <span class="unidad-label">Unidades Completadas</span>
+                        </div>
+                        <div class="unidad-info-item">
+                            <span class="unidad-numero">4</span>
+                            <span class="unidad-label">Total de Unidades</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--pagina presentacion unidad 2-->
+    <div class="pagina" id="pagina-presentacion-unidad-2">
+        <div class="fondo-presentacion-unidad-2">
+            <img src="imagenes/map.png" alt="Icono-mapa" class="boton-mapa" onclick="irAPagina('pagina-menu-principal')"
+                title="Ir al menu principal"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-menu-principal')" title="Retroceder"></button>
+            <div class="contenedor-presentacion-unidad-2">
+                <div class="cuadro-superior-presentacion-unidad-2">
+                    <h1>Unidad 2</h1>
+                    <h2>Regiones Andina y Caribe</h2>
+                </div>
+                <div class="contenedor-tarjetas-presentacion-unidad-2">
+                    <div class="card-container-presentacion-unidad-2" onclick="flipCard('card-tematicas-unidad-2')">
+                        <div class="card" id="card-tematicas-unidad-2">
+                            <div class="card-face card-front">
+                                <div class="card-title">Temáticas</div>
+                                <div class="flip-hint">👆 Click para voltear</div>
+                            </div>
+                            <div class="card-face card-back">
+                                <div class="card-description">
+                                    <p>-Paisajes.</p>
+                                    <p>-Departamentos con sus capitales.</p>
+                                    <p>-Culturas y tradiciones</p>
+                                </div>
+                                <div class="flip-hint">👆 Click para regresar</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-container-presentacion-unidad-2" onclick="flipCard('card-objetivos-unidad-2')">
+                        <div class="card" id="card-objetivos-unidad-2">
+                            <div class="card-face card-front">
+                                <div class="card-title">Objetivos de aprendizaje</div>
+                                <div class="flip-hint">👆 Click para voltear</div>
+                            </div>
+                            <div class="card-face card-back">
+                                <div class="card-description">
+                                    <p>-Identificar departamentos con sus capitales de las regiones (andina y caribes)
+                                        en el mapa.</p>
+                                    <p>-Reconocer los paisajes, fiestas y expresiones culturales.</p>
+                                </div>
+                                <div class="flip-hint">👆 Click para regresar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="boton-presentacion-unidad-2"
+                    onclick="irAPagina('pagina-paisajes-andina-caribe')">Iniciar</button>
+            </div>
+        </div>
+    </div>
+    <!--pagina paisajes andina caribe-->
+    <div class="pagina" id="pagina-paisajes-andina-caribe">
+        <div class="fondo-paisajes-andina-caribe">
+            <img src="imagenes/map.png" alt="Icono-mapa" class="boton-mapa" onclick="irAPagina('pagina-menu-principal')"
+                title="Ir al menu principal"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-presentacion-unidad-2')" title="Retroceder"></button>
+            <iframe src="https://prezi.com/p/embed/83YbUpBRhsIPcn4MOVCj/" id="iframe_container" frameborder="0"
+                webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" allow="autoplay; fullscreen"
+                height="315" width="560"></iframe>
+            <button class="boton-paisajes-andina-caribe"
+                onclick="irAPagina('pagina-departamentos-andina-caribe')">¡Conozcamos sus departamentos!</button>
+        </div>
+    </div>
+    <!--pagina departamentos andina caribe-->
+    <div class="pagina" id="pagina-departamentos-andina-caribe">
+        <div class="fondo-departamentos-andina-caribe">
+            <img src="imagenes/map.png" alt="Icono-mapa" class="boton-mapa" onclick="irAPagina('pagina-menu-principal')"
+                title="Ir al menu principal"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-paisajes-andina-caribe')" title="Retroceder"></button>
+            <div class="padlet-contenedor">
+                <div class="padlet-embed">
+                    <iframe src="https://padlet.com/embed/k8clzx9n0g733t14" frameborder="0"
+                        allow="camera;microphone;geolocation;display-capture;clipboard-write">
+                    </iframe>
+                </div>
+                <button class="boton-departamentos-andina-caribe"
+                    onclick="irAPagina('pagina-tradiciones-costumbres-andina-caribe')">¡Conozcamos las tradiciones y
+                    costumbres!</button>
+            </div>
+        </div>
+    </div>
+    <!--pagina tradiciones costumbres andina caribe-->
+    <div class="pagina" id="pagina-tradiciones-costumbres-andina-caribe">
+        <div class="fondo-tradiciones-costumbres-andina-caribe">
+            <img src="imagenes/map.png" alt="Icono-mapa" class="boton-mapa" onclick="irAPagina('pagina-menu-principal')"
+                title="Ir al menu principal"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-pagina-departamentos-andina-caribe')" title="Retroceder"></button>
+            <div style="position: relative; width: 100%; max-width: 889px; height: 435px;
+ box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin: 1.6em auto 0.9em auto; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+                <iframe loading="lazy"
+                    style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;"
+                    src="https://www.canva.com/design/DAG2SyIaB9g/1gs5wvlf901CBDrBD944Sw/view?embed"
+                    allowfullscreen="allowfullscreen" allow="fullscreen">
+                </iframe>
+            </div>
+            <button class="boton-tradiciones-costumbres-andina-caribe" onclick="finalizarUnidad2()">¡Completar
+                Unidad
+                2!</button>
+        </div>
+    </div>
+    </div>
+    <!--pagina presentacion unidad 3-->
+    <div class="pagina" id="pagina-presentacion-unidad-3">
+        <div class="fondo-presentacion-unidad-3">
+            <img src="imagenes/map.png" alt="Icono-mapa" class="boton-mapa" onclick="irAPagina('pagina-menu-principal')"
+                title="Ir al menu principal"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-menu-principal')" title="Retroceder"></button>
+            <div class="contenedor-presentacion-unidad-3">
+                <div class="cuadro-superior-presentacion-unidad-3">
+                    <h1>Unidad 3</h1>
+                    <h2>Regiones Pacifico e Insular</h2>
+                </div>
+                <div class="contenedor-tarjetas-presentacion-unidad-3">
+                    <div class="card-container-presentacion-unidad-3" onclick="flipCard('card-tematicas-unidad-2')">
+                        <div class="card" id="card-tematicas-unidad-3">
+                            <div class="card-face card-front">
+                                <div class="card-title">Temáticas</div>
+                                <div class="flip-hint">👆 Click para voltear</div>
+                            </div>
+                            <div class="card-face card-back">
+                                <div class="card-description">
+                                    <p>- Biodiversidad marina y terrestre.</p>
+                                    <p>-Departamentos con sus capitales.</p>
+                                    <p>-Comunidades afrocolombianas y raizales.</p>
+                                </div>
+                                <div class="flip-hint">👆 Click para regresar</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-container-presentacion-unidad-3" onclick="flipCard('card-objetivos-unidad-2')">
+                        <div class="card" id="card-objetivos-unidad-3">
+                            <div class="card-face card-front">
+                                <div class="card-title">Objetivos de aprendizaje</div>
+                                <div class="flip-hint">👆 Click para voltear</div>
+                            </div>
+                            <div class="card-face card-back">
+                                <div class="card-description">
+                                    <p>-Identificar las capitales del Pacífico y la región Insular.</p>
+                                    <p>-Reconocer su biodiversidad y riqueza cultural.</p>
+                                    <p>-Valorar la vida y tradiciones afrocolombianas y raizales.</p>
+                                </div>
+                                <div class="flip-hint">👆 Click para regresar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="boton-presentacion-unidad-3"
+                    onclick="irAPagina('pagina-biodiversidad-marina-terrestre')">Iniciar</button>
+            </div>
+        </div>
+    </div>
+    <!--pagina biodiversidad marina terrestre-->
+    <div class="pagina" id="pagina-biodiversidad-marina-terrestre">
+        <div class="fondo-biodiversidad-marina-terrestre">
+            <img src="imagenes/map.png" alt="Icono-mapa" class="boton-mapa" onclick="irAPagina('pagina-menu-principal')"
+                title="Ir al menu principal"></button>
+            <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                onclick="irAPagina('pagina-pagina-presentacion-unidad-3')" title="Retroceder"></button>
+            <!-- CONTENEDOR DE LOS 3 BOTONES -->
+            <div class="contenedor-tres-botones">
+                <h1 class="titulo-actividades">Biodiversidad Marina, Terrestre y Aéreo</h1>
+                <p class="subtitulo-actividades">Descubre los animales que se encuentran en las regiones Pacifica e
+                    Insular</p>
+                <div class="grid-botones-actividades">
+                    <!-- BOTÓN 1: Biodiversidad áerea -->
+                    <img src="imagenes/boton-aerea.png" alt="Icono-biodiversidad"
+                        class="boton-actividad boton-actividad-1" onclick="abrirActividad1()">
+                    </button>
+
+                    <!-- BOTÓN 2: Biodiversidad marina -->
+                    <img src="imagenes/boton-marina.png" alt="Icono-biodiversidad"
+                        class="boton-actividad boton-actividad-2" onclick="abrirActividad2()">
+                    </button>
+
+                    <!-- BOTÓN 3: Biodiversidad terrestre -->
+                    <img src="imagenes/boton-terrestre.png" alt="Icono-biodiversidad"
+                        class="boton-actividad boton-actividad-3" onclick="abrirActividad3()">
+                    </button>
+                </div>
+                <!--Boton biodiversidad marina terrestre-->
+                <button class="boton-biodiversidad-marina-terrestre"
+                    onclick="irAPagina('pagina-quiz-biodiversidad-marina-terrestre')">Evaluar</button>
+            </div>
+        </div>
+        <!--Secciones ocultas-Biodiversidad de las regiones pacifica e insular-->
+        <!--Seccion oculta-Biodiversidad áerea-->
+        <div id="seccion-actividad-1" class="seccion-oculta-actividad">
+            <div class="fondo-oscuro-actividad" onclick="cerrarActividad1()"></div>
+
+            <div class="contenedor-actividad">
+                <button class="boton-cerrar-actividad" onclick="cerrarActividad1()">&times;</button>
+
+                <h2>Biodiversidad áerea </h2>
+                <p class="descripcion-actividad">Región (Pacífico e Insular)</p>
+
+                <div class="contenido-actividad">
+                    <iframe width="640" height="480" frameBorder="0" src="https://edu.delightex.com/KVQ-GEG"></iframe>
+                </div>
+                <button class="boton-listo-actividad" onclick="cerrarActividad1()">
+                    ✓ ¡Listo! Volver
+                </button>
+            </div>
+        </div>
+        <!--Seccion oculta-biodiversidad marina-->
+        <div id="seccion-actividad-2" class="seccion-oculta-actividad">
+            <div class="fondo-oscuro-actividad" onclick="cerrarActividad2()"></div>
+
+            <div class="contenedor-actividad">
+                <button class="boton-cerrar-actividad" onclick="cerrarActividad2()">&times;</button>
+
+                <h2>Biodiversidad marina</h2>
+                <p class="descripcion-actividad">Región (Pacifica e Insular)</p>
+
+                <div class="contenido-actividad">
+                    <iframe width="640" height="480" frameBorder="0" src="https://edu.delightex.com/NWT-UEZ"></iframe>
+                </div>
+
+                <button class="boton-listo-actividad" onclick="cerrarActividad2()">
+                    ✓ ¡Listo! Volver
+                </button>
+            </div>
+        </div>
+        <!--Seccion oculta-biodiversidad terrestre-->
+        <div id="seccion-actividad-3" class="seccion-oculta-actividad">
+            <div class="fondo-oscuro-actividad" onclick="cerrarActividad3()"></div>
+
+            <div class="contenedor-actividad">
+                <button class="boton-cerrar-actividad" onclick="cerrarActividad3()">&times;</button>
+
+                <h2>Biodiversidad terrestre</h2>
+                <p class="descripcion-actividad">Región (Pacifica e Insular)</p>
+
+                <div class="contenido-actividad">
+                    <iframe width="640" height="480" frameBorder="0" src="https://edu.delightex.com/TQC-VPD"></iframe>
+                </div>
+                <button class="boton-listo-actividad" onclick="cerrarActividad3()">
+                    ✓ ¡Listo! Volver
+                </button>
+            </div>
+        </div>
+        <!--pagina quiz biodiversidad marina terrestre-->
+        <div class="pagina" id="pagina-quiz-biodiversidad-marina-terrestre">
+            <div class="fondo-quiz-biodiversidad-marina-terrestre">
+                <img src="imagenes/map.png" alt="Icono-mapa" class="boton-mapa"
+                    onclick="irAPagina('pagina-menu-principal')" title="Ir al menu principal"></button>
+                <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                    onclick="irAPagina('pagina-pagina-presentacion-unidad-3')" title="Retroceder"></button>
+                <iframe style="max-width:100%"
+                    src="https://wordwall.net/es/embed/70f0cb749cf947209ddf29fb630d1c7c?themeId=52&templateId=2&fontStackId=0"
+                    width="500" height="380" frameborder="0" allowfullscreen></iframe>
+                <button class="boton-quiz-biodiversidad-marina-terrestre"
+                    onclick="irAPagina('pagina-departamentos-pacifica-insular')">¡Conozcamos los departamentos!</button>
+            </div>
+        </div>
+        <!--pagina departamentos pacifica insular-->
+        <div class="pagina" id="pagina-departamentos-pacifica-insular">
+            <div class="fondo-departamentos-pacifica-insular">
+                <img src="imagenes/map.png" alt="Icono-mapa" class="boton-mapa"
+                    onclick="irAPagina('pagina-menu-principal')" title="Ir al menu principal"></button>
+                <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                    onclick="irAPagina('pagina-biodiversidad-marina-terrestre')" title="Retroceder"></button>
+                <button class="boton-departamentos-pacifica-insular"
+                    onclick="irAPagina('pagina-comunidades-afrocolombianos-raizales')">¡Aprender de sus
+                    comunidades!</button>
+            </div>
+        </div>
+        <!--pagina comunidades afrocolombianas raizales-->
+        <div class="pagina" id="pagina-comunidades-afrocolombianos-raizales">
+            <div class="fondo-comunidades-afrocolombianos-raizales">
+                <img src="imagenes/map.png" alt="Icono-mapa" class="boton-mapa"
+                    onclick="irAPagina('pagina-menu-principal')" title="Ir al menu principal"></button>
+                <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                    onclick="irAPagina('pagina-departamentos-pacifica-insular')" title="Retroceder"></button>
+                <div class="contenedor-iframe">
+                    <iframe
+                        src="https://1drv.ms/p/c/e1ec7d000b3062f3/IQQ8kOcm78TURLlB-OQqN7Y0AbhaPSJHIefsnHEIxTKdajM?em=2&amp;wdAr=1.7777777777777777&amp;wdEaaCheck=1"
+                        width="600px" height="420px" frameborder="0" allowfullscreen>
+                    </iframe>
+                </div>
+                <button class="boton-comunidades-afrocolombianos-raizales" onclick="finalizarUnidad3()">¡Completar
+                    Unidad
+                    3!</button>
+            </div>
+        </div>
+        <!--pagina presentacion unidad 4-->
+        <div class="pagina" id="pagina-presentacion-unidad-4">
+            <div class="fondo-presentacion-unidad-4">
+                <img src="imagenes/map.png" alt="Icono-mapa" class="boton-mapa"
+                    onclick="irAPagina('pagina-menu-principal')" title="Ir al menu principal"></button>
+                <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                    onclick="irAPagina('pagina-menu-principal')" title="Retroceder"></button>
+                <div class="contenedor-presentacion-unidad-4">
+                    <div class="cuadro-superior-presentacion-unidad-4">
+                        <h1>Unidad 4</h1>
+                        <h2>Regiones Amazónica y Orinoquía</h2>
+                    </div>
+                    <div class="contenedor-tarjetas-presentacion-unidad-4">
+                        <div class="card-container-presentacion-unidad-4" onclick="flipCard('card-tematicas-unidad-2')">
+                            <div class="card" id="card-tematicas-unidad-4">
+                                <div class="card-face card-front">
+                                    <div class="card-title">Temáticas</div>
+                                    <div class="flip-hint">👆 Click para voltear</div>
+                                </div>
+                                <div class="card-face card-back">
+                                    <div class="card-description">
+                                        <p>-Biodiversidad.</p>
+                                        <p>-Departamentos con sus capitales.</p>
+                                        <p>-Comunidades indigenas y sus tradiciones.</p>
+                                    </div>
+                                    <div class="flip-hint">👆 Click para regresar</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-container-presentacion-unidad-4" onclick="flipCard('card-objetivos-unidad-2')">
+                            <div class="card" id="card-objetivos-unidad-4">
+                                <div class="card-face card-front">
+                                    <div class="card-title">Objetivos de aprendizaje</div>
+                                    <div class="flip-hint">👆 Click para voltear</div>
+                                </div>
+                                <div class="card-face card-back">
+                                    <div class="card-description">
+                                        <p>-Ubicar las capitales amazónicas y de la Orinoquía.</p>
+                                        <p>-Comprender la importancia de los ecosistemas.</p>
+                                        <p>-Valorar la riqueza cultural de comunidades indígenas.</p>
+                                    </div>
+                                    <div class="flip-hint">👆 Click para regresar</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="boton-presentacion-unidad-4"
+                        onclick="irAPagina('pagina-video-comunidades-indigenas')">Iniciar</button>
+                </div>
+            </div>
+        </div>
+        <div class="pagina" id="pagina-video-comunidades-indigenas">
+            <div class="fondo-video-comunidades-indigenas">
+            <img src="imagenes/map.png" alt="Icono-mapa" class="boton-mapa"
+                    onclick="irAPagina('pagina-menu-principal')" title="Ir al menu principal"></button>
+                <img src="imagenes/back-button.png" alt="Icono-retroceder" class="boton-regresar"
+                    onclick="irAPagina('pagina-presentacion-unidad-4')" title="Retroceder"></button>
+            <iframe id="youtube-video" width="560" height="315"
+                    src="https://www.youtube.com/embed/vreaYDMZc38?si=CQXHr-fKxoHAVvwO" title="Video educativo"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen style="display:none;">
+                </iframe>
+            <button class="boton-video-comunidades-indigenas" onclick="irAPagina('pagina-secuencia-didactica-unidad-4')">Continuar</button>
+            </div>
+        </div>
+        <div class="pagina" id="pagina-secuencia-didactica-unidad-4">
+            <div class="fondo-secuencia-didactica-unidad-4">
+
+                <div class="contenedor-genially-grande">
+                    <iframe title="Misión de Supervivencia: Corazón de la Selva!" frameborder="0"
+                        style="width: 100%; height: 100%; border: none; border-radius: 15px;"
+                        src="https://view.genially.com/68feddd217926b46bdd6b51c" type="text/html"
+                        allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all">
+                    </iframe>
+                </div>
+                <button class="boton-secuencia-didactica-unidad-4" onclick="finalizarUnidad4()">¡Completar Unidad
+                    4!</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
