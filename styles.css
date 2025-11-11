@@ -1,0 +1,2299 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+.pagina {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.pagina.activa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/*pagina inicio */
+#pagina-inicio{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+.fondo-inicio { 
+    background-image: url("imagenes/portada-ova-actualizada.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;
+ }
+.contenedor-inicio {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px;
+}
+.contenedor-inicio h1 {
+    color: rgb(254, 153, 0);
+    font-size: 70px;
+    text-shadow: 
+        3px 3px 0px #00d9ff,
+        4px 4px 0px #45e045,
+        -1px -1px 0px #fff,
+        1px 1px 8px rgba(0, 0, 0, 0.3);
+    -webkit-text-stroke: 2px black;
+    max-width: 600px;
+    margin: 0 auto 10px;
+    text-align: center;
+    line-height: 0.9;
+}
+.contenedor-inicio h2 {
+    color: rgb(75, 46, 2);
+    font-size: 30px;
+    font-family: 'Dancing Script', cursive;
+    font-style: italic;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    line-height: 1;
+}
+/*boton inicio*/
+.boton-inicio {
+    background-color: #ae512fd0;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+}
+.boton-inicio:hover {
+    background-color: #8d3f24;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-inicio:active {
+    transform: scale(0.95);
+}
+/*boton simbolo*/
+.boton-simbolo {
+    border-radius: 10px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 100;
+}
+.boton-simbolo:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-simbolo:active {
+    transform: scale(0.95);
+}
+/*seccion manual */
+.seccion-oculta-manual {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(33, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+.seccion-oculta-manual.activa {
+    display: flex;
+}
+#seccion-manual .contenido-manual {
+    background-image: url("imagenes/imagen-manual.png");
+    background-size: cover;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    height: 600px;
+    max-height: 100vh;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+    position: relative;        
+    box-sizing: border-box; 
+    padding: 40px; 
+}
+/*boton cerrar*/
+.boton-cerrar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #666;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+.boton-cerrar:hover {
+    background: #f0f0f0;
+    color: #333;
+    transform: rotate(90deg);
+}
+.contenedor-manual {
+    position: absolute;
+}
+.contenido-manual h1 {
+    color: #000;
+    text-shadow: 3px 3px 3px #fff;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+/*botones manual*/
+.botones-manual {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    justify-content: center; 
+    align-items: center;        
+    gap: 30px;
+    padding: 10px;
+    margin-top: 150px;
+    text-align: center;
+}
+.boton-manual {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #cb7135 0%, #dda078 100%);
+    color: rgb(5, 0, 0);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px #2d1301;
+}
+.boton-manual:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px #2d1301;
+}
+.indicaciones {
+    display: none;
+    animation: fadeIn 0.3s ease;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+.indicaciones.active {
+    display: block;
+}
+.indicaciones h2 {
+    color: #667eea;
+    text-shadow: 3px 3px 3px #ffffff;
+    margin-bottom: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+.indicaciones p {
+    color: #0d0000;
+    line-height: 1.2;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+    max-width: 100%;          
+    margin: 0 auto 10px;
+}
+.back-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    border: 2px solid #a2d9ce;
+    border-radius: 8px;
+    background: transparent;
+    color: #a2d6ce;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 20px auto 0;
+}
+.back-btn:hover {
+    background: #a2d6ce;
+    color: white;
+    transform: translateX(-5px);
+}
+/* pagina avatar */
+#pagina-avatar {
+    z-index: 1;
+}
+.fondo-avatar{
+    background-image: url("imagenes/portada-creacion-avatar.png");
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;  
+     width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center; 
+    
+}
+.creacion-avatar {
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    height: 80vh;
+    text-align: center;
+    transform: translate(80%, 0%);
+}
+.creacion-avatar h1 {
+    color: #3b82f6;
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.creacion-avatar p {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+/*avatar*/
+.avatar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    justify-items: center;
+    margin: 5px 0;
+}
+.avatar-circulo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f4e2c1;
+    border: 4px solid #c08457;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+    cursor: pointer;
+}
+.avatar-circulo:hover {
+    transform: scale(1.1);
+    border-color: #fbbf24;
+}
+.avatar-circulo.seleccionado {
+    border-color: #f59e0b;
+    box-shadow: 0 0 15px #f59e0b;
+    transform: scale(1.15);
+}
+.avatar-circulo img {
+    width: 85%;
+    height: auto;
+    border-radius: 50%;
+}
+input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #c08457;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+/*boton avatar*/
+.boton-avatar {
+    background-color: #f59e0b;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px 5px;
+}
+.boton-avatar.mostrar {
+    display: inline-block;
+}
+.boton-avatar:hover {
+    background-color: #d97706;
+    transform: scale(1.05);
+}
+.boton-avatar:active {
+    transform: scale(0.95);
+}
+/*boton bienvenida*/
+.boton-bienvenida {
+    background-color: #3b82f6;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px 5px;
+}
+.boton-bienvenida.mostrar {
+    display: inline-block;
+}
+.boton-bienvenida:hover {
+    background-color: #1e40af;
+    transform: scale(1.05);
+}
+.boton-bienvenida:active {
+    transform: scale(0.95);
+}
+/* pagina bienvenida */
+#pagina-bienvenida {
+    z-index: 1;
+}
+.fondo-bienvenida {
+    background-image: url("imagenes/portada-bienvenida.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;
+    justify-content: center;   
+    align-items: center; 
+    overflow: hidden;
+}
+.bienvenida {
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    overflow: hidden;
+    transform: translateX(55%); 
+}
+.bienvenida h1 {
+    color: #f59e0b;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+.bienvenida h2 {
+    color: #3b82f6;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.avatar-circulo img.seleccionado {
+  border: 4px solid #fdd835;
+  transform: scale(1.1);
+  transition: 0.3s ease;
+}
+.bienvenida p {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+/* pagina presentacion unidad 1 */
+#pagina-presentacion-unidad-1 {
+    z-index: 1;
+}
+.fondo-presentacion-unidad-1{
+    background-image: url("imagenes/portada-unidad\ 1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px; 
+    overflow: hidden;
+}
+.contenedor-presentacion-unidad-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 1800px;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}   
+.contenedor-tarjetas-presentacion-unidad-1 {
+    display: flex;
+    justify-content: center;  
+    align-items: center;     
+    flex-wrap: nowrap;        
+    gap: 100px;               
+    width: 100%;
+    max-width: 1200px;        
+    margin: 0 auto;
+    padding: 0 40px;
+}
+        .cuadro-superior-presentacion-unidad-1 h1 {
+            font-size: 24px;
+            color: #f0f0f0;
+            margin: 0 0 10px 0;
+            line-height: 1.5;
+        }
+        .cuadro-superior-presentacion-unidad-1 h2 {
+            font-size: 20px;
+            color: #f0f0f0;
+            margin: 10px 0 0 0;
+            line-height: 1.5;
+        }
+/*cards presentacion unidad 1*/
+ .card-container-presentacion-unidad-1 {
+            perspective: 1000px;
+            cursor: pointer;
+            flex-shrink: 0; 
+        }
+        .card {
+            width: 280px;
+            height: 330px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .card-front {
+            color: white;
+        }
+        .card-back {
+            color: white;
+            transform: rotateY(180deg);
+        }
+        #card-tematicas-unidad-1 .card-front {
+            background-color: #A7553F;
+        }
+        #card-tematicas-unidad-1 .card-back {
+            background-color: #dda078;
+        }
+        #card-objetivos-unidad-1 .card-front {
+            background-color: #A7553F
+        }
+        #card-objetivos-unidad-1 .card-back {
+           background-color: #dda078;
+        }
+        .card-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .card-description {
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: center;
+            opacity: 0.95;
+        }
+        .flip-hint {
+            position: absolute;
+            bottom: 20px;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+/*boton presentacion unidad 1*/
+.boton-presentacion-unidad-1 {
+    background-color: #808000;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+    position: relative;
+    z-index: 10;
+}
+.boton-presentacion-unidad-1:hover {
+    background-color: #5e5e01;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-presentacion-unidad-1:active {
+    transform: scale(0.95);
+}
+.boton-presentacion-unidad-1.mostrar {
+    display: inline-block;
+}
+/* pagina cuento */
+#pagina-cuento {
+    z-index: 1;
+}
+.fondo-cuento {
+    background-image: url("imagenes/portada-cuento.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+.fondo-cuento iframe {
+    width: 90%;
+    max-width: 670px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: none;
+}
+/*boton cuento*/
+.boton-cuento {
+    background-color: #ae512fd0;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+}
+.boton-cuento:hover {
+    background-color: #A7553F;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-cuento:active {
+    transform: scale(0.95);
+}
+.boton-cuento.mostrar {
+    display: inline-block;
+}
+/* pagina quiz cuento */
+#pagina-quiz-cuento {
+    z-index: 1;
+}
+.fondo-quiz-cuento {
+    background-image: url("imagenes/portada-cuento.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+}
+#JotFormIFrame-252929001489664 {
+    width: 90%;
+    max-width: 800px;
+    height: 70vh;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background-color: white;
+}
+/*boton quiz cuento*/
+.boton-quiz-cuento {
+    background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+}
+.boton-quiz-cuento:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-quiz-cuento:active {
+    transform: scale(0.95);
+}
+.boton-quiz-cuento.mostrar {
+    display: inline-block;
+}
+/*pagina video*/
+#pagina-video{
+     z-index: 1;
+}
+.fondo-video{
+    background-image: url("imagenes/portada-video.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+/*boton video*/
+.boton-video {
+    background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+}
+.boton-video:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-video:active {
+    transform: scale(0.95);
+}
+.boton-video.mostrar {
+    display: inline-block;
+}
+/* pagina acentos */
+#pagina-acentos{
+    z-index: 1;
+}
+.fondo-acentos{
+    background-image: url("imagenes/portada-video.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;
+}
+/*boton acentos*/
+.boton-acentos {
+    background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+.boton-acentos:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-acentos:active {
+    transform: scale(0.95);
+}
+.boton-acentos.mostrar {
+    display: inline-block;
+}
+/*pagina frases tipicas */
+#pagina-frases-tipicas {
+    z-index: 1;
+}
+.fondo-frases-tipicas {
+    background-image: url("imagenes/portada-video.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+.video-youtube {
+  position: relative;
+  display: inline-block;
+  width: 560px;
+  height: 315px;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+.video-youtube img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.boton-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 64px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 10px 25px;
+  line-height: 1;
+  transition: background-color 0.3s;
+}
+.video-youtube:hover .boton-play {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+/*boton frases tipicas*/
+.boton-frases-tipicas {
+    background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+}
+.boton-frases-tipicas:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-frases-tipicas:active {
+    transform: scale(0.95);
+}
+.boton-frases-tipicas.mostrar {
+    display: inline-block;
+}
+/*pagina quiz frases acentos */
+#pagina-quiz-frases-acentos{
+   z-index: 1; 
+}
+.fondo-quiz-frases-acentos{
+    background-image: url("imagenes/portada-video.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;
+}
+/*boton quiz frases acentos*/
+.boton-quiz-frases-acentos{
+    background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    position: relative;
+    z-index: 10;
+}
+.boton-quiz-frases-acentos:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-quiz-frases-acentos:active {
+    transform: scale(0.95);
+}
+.boton-quiz-frases-acentos.mostrar {
+    display: inline-block;
+}
+/* pagina menu principal*/
+#pagina-menu-principal{
+   z-index: 1;
+}
+.fondo-menu-principal{
+    background-image: url("imagenes/portada-ruta.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;
+    position: relative;
+}
+/*contenedor-menu principal*/
+.contenedor-menu-principal {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.info-box-menu {
+    position: absolute;
+    bottom: 200px;
+    right: 30px;
+    background-color: #A7553F;
+    border-radius: 20px;
+    padding: 25px 35px;
+    max-width: 400px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    z-index: 15;
+}
+.info-box-menu h1 {
+    color: #f0f0f0;
+    font-size: 28px;
+    text-align: center;
+    margin: 0 0 15px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.info-box-menu p {
+    color: #f0f0f0;
+    font-size: 16px;
+    text-align: left;
+    margin: 0;
+    line-height: 1.4;
+}
+.nivel-card {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+}
+.insignia {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+.insignia:hover {
+  transform: scale(1.1);
+}
+/* Ocultar las desbloqueadas por defecto */
+.insignia.desbloqueada {
+  display: none;
+}
+/* Mostrar desbloqueadas solo cuando el nivel tiene la clase desbloqueado */
+.nivel-card.desbloqueado .insignia.bloqueada {
+  display: none;
+}
+.nivel-card.desbloqueado .insignia.desbloqueada {
+  display: block;
+}
+/* Cuando el nivel está completado */
+.nivel-card.completado .insignia.desbloqueada {
+  filter: grayscale(100%);
+  opacity: 0.7;
+}
+@media (max-width: 768px) {
+    .niveles-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/*pagina presentacion unidad 2*/
+#pagina-presentacion-unidad-2{
+    z-index: 1;
+}
+.fondo-presentacion-unidad-2{
+    background-image: url("imagenes/portada-unidad\ 2.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;
+}
+.contenedor-presentacion-unidad-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 1800px;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}   
+.contenedor-tarjetas-presentacion-unidad-2 {
+    display: flex;
+    justify-content: center;  
+    align-items: center;     
+    flex-wrap: nowrap;        
+    gap: 100px;               
+    width: 100%;
+    max-width: 1200px;        
+    margin: 0 auto;
+    padding: 0 40px;
+}
+        .cuadro-superior-presentacion-unidad-2 h1 {
+            font-size: 24px;
+            color: #f0f0f0;
+            margin: 0 0 10px 0;
+            line-height: 1.5;
+        }
+        .cuadro-superior-presentacion-unidad-2 h2 {
+            font-size: 20px;
+            color: #f0f0f0;
+            margin: 10px 0 0 0;
+            line-height: 1.5;
+        }
+/*cards presentacion unidad 2*/
+ .card-container-presentacion-unidad-2 {
+            perspective: 1000px;
+            cursor: pointer;
+            flex-shrink: 0; 
+        }    
+        #card-tematicas-unidad-2 .card-front {
+            background-color: #A7553F;
+        }
+        #card-tematicas-unidad-2 .card-back {
+            background-color: #dda078;
+        }
+        #card-objetivos-unidad-2 .card-front {
+            background-color: #A7553F
+        }
+        #card-objetivos-unidad-2 .card-back {
+           background-color: #dda078;
+        }
+/*boton presentacion unidad 2*/
+.boton-presentacion-unidad-2 {
+    background-color: #808000;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+    position: relative;
+    z-index: 10;
+}
+.boton-presentacion-unidad-2:hover {
+    background-color: #5e5e01;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.boton-presentacion-unidad-2:active {
+    transform: scale(0.95);
+}
+.boton-presentacion-unidad-2.mostrar {
+    display: inline-block;
+}
+/*pagina paisajes andina y caribe*/
+#pagina-paisajes-andina-caribe{
+    z-index: 1;
+}
+.fondo-paisajes-andina-caribe{
+    background-image: url("imagenes/portada-unidad\ 2.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+.fondo-paisajes-andina-caribe iframe {
+    width: 90%;
+    max-width: 900px;
+    height: 500px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: none;
+}
+/*boton paisajes andina y caribe*/
+.boton-paisajes-andina-caribe{
+     background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+}
+.boton-paisajes-andina-caribe:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-paisajes-andina-caribe:active {
+    transform: scale(0.95);
+}
+.boton-paisajes-andina-caribe.mostrar {
+    display: inline-block;
+}
+/*paginas departamentos andina y caribe*/
+#pagina-departamentos-andina-caribe{
+    z-index: 1;
+}
+.fondo-departamentos-andina-caribe{
+    background-image: url("imagenes/portada-regiones-andina-caribe.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;
+}
+/* Contenedor general centrado */
+.padlet-contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      
+  justify-content: center; 
+  min-height: 100vh;        
+  background: transparent;  
+  padding: 20px;
+}
+/* Caja que contiene el iframe */
+.padlet-embed {
+  width: 90%;          
+  max-width: 1000px; 
+  height: 440px;  
+  aspect-ratio: 16/9;  
+  overflow: hidden;
+  border: none;
+  border-radius: 12px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+  background: transparent; 
+}
+/* El iframe */
+.padlet-embed iframe {
+  width: 100%;
+  height: 440px;
+  border: none;
+  display: block;
+  background: transparent; 
+}
+/*boton departamentos andina y caribe*/
+.boton-departamentos-andina-caribe{
+     background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    position: relative;
+    z-index: 10;
+}
+.boton-departamentos-andina-caribe:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-departamentos-andina-caribe:active {
+    transform: scale(0.95);
+}
+.boton-departamentos-andina-caribe.mostrar {
+    display: inline-block;
+}
+/*tradiciones costumbres andina y caribe*/
+#pagina-tradiciones-costumbres-andina-caribe{
+    z-index: 1;
+}
+.fondo-tradiciones-costumbres-andina-caribe{
+    background-image: url("imagenes/portada-regiones-andina-caribe.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;  
+}
+/*boton tradiciones costumbres andina caribe*/
+.boton-tradiciones-costumbres-andina-caribe{
+    background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+}
+.boton-tradiciones-costumbres-andina-caribe:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-tradiciones-costumbres-andina-caribe:active {
+    transform: scale(0.95);
+}
+.boton-tradiciones-costumbres-andina-caribe.mostrar {
+    display: inline-block;
+}
+/*pagina presentacion unidad 3*/
+#pagina-presentacion-unidad-3{
+    z-index: 1;
+}
+.fondo-presentacion-unidad-3{
+     background-image: url("imagenes/portada-unidad\ 3.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;  
+}
+.contenedor-presentacion-unidad-3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 1800px;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}   
+.contenedor-tarjetas-presentacion-unidad-3 {
+    display: flex;
+    justify-content: center;  
+    align-items: center;     
+    flex-wrap: nowrap;        
+    gap: 100px;               
+    width: 100%;
+    max-width: 1200px;        
+    margin: 0 auto;
+    padding: 0 40px;
+}
+        .cuadro-superior-presentacion-unidad-3 h1 {
+            font-size: 24px;
+            color: #f0f0f0;
+            margin: 0 0 10px 0;
+            line-height: 1.5;
+        }
+        .cuadro-superior-presentacion-unidad-3 h2 {
+            font-size: 20px;
+            color: #f0f0f0;
+            margin: 10px 0 0 0;
+            line-height: 1.5;
+        }
+/*cards presentacion unidad 3*/
+ .card-container-presentacion-unidad-3 {
+            perspective: 1000px;
+            cursor: pointer;
+            flex-shrink: 0; 
+        }    
+        #card-tematicas-unidad-3 .card-front {
+            background-color: #A7553F;
+        }
+        #card-tematicas-unidad-3 .card-back {
+            background-color: #dda078;
+        }
+        #card-objetivos-unidad-3 .card-front {
+            background-color: #A7553F
+        }
+        #card-objetivos-unidad-3 .card-back {
+           background-color: #dda078;
+        }
+/*boton presentacion unidad 3*/
+.boton-presentacion-unidad-3 {
+    background-color: #808000;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+    position: relative;
+    z-index: 10;
+}
+.boton-presentacion-unidad-3:hover {
+    background-color: #5e5e01;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-presentacion-unidad-3:active {
+    transform: scale(0.95);
+}
+.boton-presentacion-unidad-3.mostrar {
+    display: inline-block;
+}
+/*pagina biodiversidad mariana y terrestre*/
+#pagina-biodiversidad-marina-terrestre{
+    z-index: 1;
+}
+.fondo-biodiversidad-marina-terrestre{
+     background-image: url("imagenes/portada-regiones-insular-pacifico.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;  
+}
+.contenedor-tres-botones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px;
+    width: 90%;
+    max-width: 1200px;
+}
+.titulo-actividades {
+    color: #f0f0f0;
+    font-size: 2.5em;
+    text-align: center;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+.subtitulo-actividades {
+    color: #f4e4c1;
+    font-size: 1.3em;
+    text-align: center;
+    margin: 0;
+}
+/* Grid de 3 botones */
+.grid-botones-actividades {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    width: 100%;
+    margin-top: 30px;
+    justify-items: center; /* centra las imágenes horizontalmente */
+}
+/* Imágenes que funcionan como botones */
+.boton-actividad {
+    width: 220px;              
+    height: auto;              
+    border-radius: 70%;      
+    border: 5px solid #8b5a3c;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* Efecto hover */
+.boton-actividad:hover {
+    transform: scale(1.08); /* agranda ligeramente */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+    filter: brightness(1.1);
+}
+.seccion-oculta-actividad {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    animation: aparecer 0.3s ease;
+}
+.seccion-oculta-actividad.activa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@keyframes aparecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.fondo-oscuro-actividad {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+}
+.contenedor-actividad {
+    position: relative;
+    width: 90%;
+    max-width: 1100px;
+    max-height: 90vh;
+    background: linear-gradient(135deg, #f9f1e3 0%, #e8dcc3 100%);
+    border: 8px solid #8b5a3c;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    padding: 50px 40px 40px 40px;
+    overflow-y: auto;
+    z-index: 10001;
+    animation: deslizar 0.4s ease;
+}
+@keyframes deslizar {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.boton-cerrar-actividad {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #f4e4c1 0%, #d4b896 100%);
+    border: 4px solid #8b5a3c;
+    border-radius: 50%;
+    font-size: 2.5em;
+    color: #5d3a1a;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    line-height: 1;
+    padding: 0;
+}
+.boton-cerrar-actividad:hover {
+    transform: rotate(90deg) scale(1.1);
+}
+.contenedor-actividad h2 {
+    color: #5d3a1a;
+    font-size: 2.5em;
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+.descripcion-actividad {
+    color: #8b5a3c;
+    font-size: 1.2em;
+    text-align: center;
+    margin: 0 0 25px 0;
+}
+.contenido-actividad {
+    width: 100%;
+    background: white;
+    border: 6px solid #8b5a3c;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    margin-bottom: 25px;
+}
+.contenido-actividad iframe {
+    display: block;
+    width: 100%;
+}
+.boton-listo-actividad {
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: white;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+.boton-listo-actividad:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.6);
+}
+/* Responsive */
+@media (max-width: 768px) {
+    .grid-botones-actividades {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .boton-actividad {
+        min-height: 200px;
+    }
+    
+    .contenedor-actividad {
+        width: 95%;
+        padding: 40px 20px 20px 20px;
+    }
+    
+    .contenido-actividad iframe {
+        height: 400px;
+    }
+}
+.boton-biodiversidad-marina-terrestre{
+    background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    position: relative;
+    z-index: 10;
+}
+.boton-biodiversidad-marina-terrestre:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-biodiversidad-marina-terrestre:active {
+    transform: scale(0.95);
+}
+.boton-biodiversidad-marina-terrestre.mostrar {
+    display: inline-block;
+}
+/*pagina quiz biodiversidad mariana y terrestre*/
+#pagina-quiz-biodiversidad-marina-terrestre{
+    z-index: 1;
+}
+.fondo-quiz-biodiversidad-marina-terrestre{
+     background-image: url("imagenes/portada-regiones-insular-pacifico.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;  
+}
+.contenedor-iframe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+iframe {
+  border: none;
+  border-radius: 10px;
+  background: white;
+}
+.boton-quiz-biodiversidad-marina-terrestre{
+     background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+}
+.boton-quiz-biodiversidad-marina-terrestre:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-quiz-biodiversidad-marina-terrestre:active {
+    transform: scale(0.95);
+}
+.boton-quiz-biodiversidad-marina-terrestre.mostrar {
+    display: inline-block;
+}
+/*pagina departamentos pacifica-insular*/
+#pagina-departamentos-pacifica-insular{
+    z-index: 1;
+}
+.fondo-departamentos-pacifica-insular{
+    background-image: url("imagenes/portada-regiones-insular-pacifico.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;  
+}
+.boton-departamentos-pacifica-insular{
+     background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+}
+.boton-departamentos-pacifica-insular:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-departamentos-pacifica-insular:active {
+    transform: scale(0.95);
+}
+.boton-departamentos-pacifica-insular.mostrar {
+    display: inline-block;
+}
+/*pagina comunidades afrocolombianas raizales*/
+#pagina-comunidades-afrocolombianos-raizales{
+    z-index: 1;
+}
+.fondo-comunidades-afrocolombianos-raizales{
+     background-image: url("imagenes/portada-regiones-insular-pacifico.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;  
+}
+.boton-comunidades-afrocolombianos-raizales{
+     background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+}
+.boton-comunidades-afrocolombianos-raizales:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-comunidades-afrocolombianos-raizales:active {
+    transform: scale(0.95);
+}
+.boton-comunidades-afrocolombianos-raizales.mostrar {
+    display: inline-block;
+}
+/*pagina presentacion unidad 4*/
+#pagina-presentacion-unidad-4{
+    z-index: 1;
+}
+.fondo-presentacion-unidad-4{
+    background-image: url("imagenes/portada-unidad\ 4.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;  
+}
+.contenedor-presentacion-unidad-4{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 1800px;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}  
+.contenedor-tarjetas-presentacion-unidad-4 {
+    display: flex;
+    justify-content: center;  
+    align-items: center;     
+    flex-wrap: nowrap;        
+    gap: 100px;               
+    width: 100%;
+    max-width: 1200px;        
+    margin: 0 auto;
+    padding: 0 40px;
+}
+        .cuadro-superior-presentacion-unidad-4 h1 {
+            font-size: 24px;
+            color: #f0f0f0;
+            margin: 0 0 10px 0;
+            line-height: 1.5;
+        }
+        .cuadro-superior-presentacion-unidad-4 h2 {
+            font-size: 20px;
+            color: #f0f0f0;
+            margin: 10px 0 0 0;
+            line-height: 1.5;
+        }
+/*cards presentacion unidad 4*/
+ .card-container-presentacion-unidad-4 {
+            perspective: 1000px;
+            cursor: pointer;
+            flex-shrink: 0; 
+        }    
+        #card-tematicas-unidad-4 .card-front {
+            background-color: #A7553F;
+        }
+        #card-tematicas-unidad-4 .card-back {
+            background-color: #dda078;
+        }
+        #card-objetivos-unidad-4 .card-front {
+            background-color: #A7553F
+        }
+        #card-objetivos-unidad-4 .card-back {
+           background-color: #dda078;
+        }
+/*boton presentacion unidad 4*/
+.boton-presentacion-unidad-4 {
+    background-color: #808000;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+    position: relative;
+    z-index: 10;
+}
+.boton-presentacion-unidad-4:hover {
+    background-color: #5e5e01;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-presentacion-unidad-4:active {
+    transform: scale(0.95);
+}
+.boton-presentacion-unidad-4.mostrar {
+    display: inline-block;
+}
+#pagina-secuencia-didactica-unidad-4{
+    z-index: 1;
+}
+.fondo-secuencia-didactica-unidad-4 {
+    background-image: url("imagenes/portada-regiones-orinoquia-amazonica.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+/* Contenedor grande para el Genially */
+.contenedor-genially-grande {
+    width: 95%;
+    max-width: 1400px;
+    height: 80vh;
+    background: rgba(0, 0, 0, 0.3);
+    border: 6px solid #8b5a3c;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+.boton-secuencia-didactica-unidad-4{
+     background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+}
+.boton-secuencia-didactica-unidad-4:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-secuencia-didactica-unidad-4:active {
+    transform: scale(0.95);
+}
+.boton-secuencia-didactica-unidad-4.mostrar {
+    display: inline-block;
+}
+/*boton home*/
+.boton-home {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #664a2d;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50%;
+    font-size: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.boton-home:hover {
+    background-color: #a6825b;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-home:active {
+    transform: scale(0.95);
+}
+/*boton regresar*/
+.boton-regresar {
+    position: fixed;
+    top: 10px;
+    right: 80px;
+    background-color: #664a2d;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50%;
+    font-size: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.boton-regresar:hover {
+    background-color: #a6825b;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-regresar:active {
+    transform: scale(0.95);
+}
+/*boton mapa*/
+.boton-mapa {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #664a2d;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50%;
+    font-size: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.boton-mapa:hover {
+    background-color: #a6825b;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-mapa:active {
+    transform: scale(0.95);
+}
+/*boton progreso*/
+.boton-progreso {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #664a2d;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50%;
+    font-size: 200px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.boton-progreso:hover {
+    background-color: #a6825b;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-progreso:active {
+    transform: scale(0.95);
+}
+.seccion-progreso-oculta {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    animation: aparecerProgreso 0.3s ease;
+}
+.seccion-progreso-oculta.activa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@keyframes aparecerProgreso {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.fondo-oscuro-progreso {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+}
+.contenedor-modal-progreso {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    background: linear-gradient(135deg, #f9f1e3 0%, #e8dcc3 100%);
+    border: 8px solid #8b5a3c;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    padding: 60px 40px 40px 40px;
+    z-index: 10001;
+}
+.boton-cerrar-modal-progreso {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #f4e4c1 0%, #d4b896 100%);
+    border: 4px solid #8b5a3c;
+    border-radius: 50%;
+    font-size: 2.5em;
+    color: #5d3a1a;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    line-height: 1;
+    padding: 0;
+}
+.boton-cerrar-modal-progreso:hover {
+    background: linear-gradient(135deg, #d4b896 0%, #c4a886 100%);
+    transform: rotate(90deg) scale(1.1);
+}
+.cartel-nombre-modal {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 420px;
+    height: 80px;
+    background: linear-gradient(135deg, #f4e4c1 0%, #d4b896 100%);
+    border: 6px solid #8b5a3c;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+.cartel-nombre-modal h1 {
+    font-size: 1.9em;
+    color: #5d3a1a;
+    font-family: 'Comic Sans MS', cursive;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+.contenido-modal-progreso {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.seccion-avatar-modal {
+    flex: 0 0 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+.circulo-avatar-modal {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    border: 8px solid #8b5a3c;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        inset 0 -8px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.circulo-avatar-modal img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.nombre-explorador-modal {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #5d3a1a;
+    text-align: center;
+    background: #f4e4c1;
+    padding: 10px 25px;
+    border-radius: 20px;
+    border: 3px solid #8b5a3c;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+.seccion-insignias-modal {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.contenedor-insignias-modal {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+}
+.circulo-insignia-modal {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: transparent;
+    border: 6px solid #8b5a3c;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.3),
+        inset 0 -3px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.5s ease;
+}
+.circulo-insignia-modal.desbloqueada {
+    background: transparent;
+    box-shadow: 
+        0 5px 20px rgba(77, 184, 255, 0.6),
+        inset 0 -3px 10px rgba(255, 255, 255, 0.2);
+    animation: pulso-modal 2s infinite;
+}
+@keyframes pulso-modal {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+.candado-modal {
+    font-size: 3em;
+    color: #6d6d6d;
+}
+.circulo-insignia-modal.desbloqueada .candado-modal {
+    display: none;
+}
+.circulo-insignia-modal img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+}
+.contenedor-barra-modal {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.etiqueta-barra-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.etiqueta-barra-modal span {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #5d3a1a;
+}
+.barra-fondo-modal {
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(135deg, #e8dcc3 0%, #d4b896 100%);
+    border: 4px solid #8b5a3c;
+    border-radius: 25px;
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.3);
+    padding: 4px;
+    position: relative;
+}
+.barra-relleno-modal {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ffd700 0%, #ffed4e 100%);
+    border-radius: 20px;
+    box-shadow: 
+        0 3px 15px rgba(255, 215, 0, 0.7),
+        inset 0 2px 8px rgba(255, 255, 255, 0.6);
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+.barra-relleno-modal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.5), 
+        transparent);
+    animation: brillo-modal 2.5s infinite;
+}
+@keyframes brillo-modal {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+.estrella-barra-modal {
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    border: 4px solid #8b5a3c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.7);
+    animation: rotar-estrella-modal 4s linear infinite;
+}
+@keyframes rotar-estrella-modal {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
+}
+.info-unidades-modal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 10px;
+}
+.unidad-info-item {
+    background: linear-gradient(135deg, #8b5a3c 0%, #6d4428 100%);
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.unidad-numero {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.unidad-label {
+    font-size: 0.9em;
+    color: #f4e4c1;
+}
+.decoracion-jaguar-modal {
+    position: absolute;
+    bottom: -40px;
+    left: -80px;
+    width: 200px;
+    opacity: 0.9;
+    pointer-events: none;
+}
+.decoracion-tucan-modal {
+    position: absolute;
+    top: 80px;
+    right: -50px;
+    width: 120px;
+    opacity: 0.9;
+    pointer-events: none;
+}
+@media (max-width: 768px) {
+    .contenedor-modal-progreso {
+        width: 95%;
+        padding: 50px 20px 30px 20px;
+    }
+
+    .contenido-modal-progreso {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .cartel-nombre-modal {
+        width: 90%;
+        height: 70px;
+        top: -45px;
+    }
+
+    .circulo-avatar-modal {
+        width: 150px;
+        height: 150px;
+    }
+
+    .circulo-insignia-modal {
+        width: 90px;
+        height: 90px;
+    }
+
+    .info-unidades-modal {
+        grid-template-columns: 1fr;
+    }
+}
+.imagen-insignia-modal {
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+/* Cuando se desbloquea */
+.circulo-insignia-modal.desbloqueada .imagen-insignia-modal {
+    opacity: 1;
+}
+/* Animación para cerrar overlay */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+/*pagina video comunidades indigenas*/
+#pagina-video-comunidades-indigenas{
+    z-index: 1;
+}
+.fondo-comunidades-indigenas{
+     background-image: url("imagenes/portada-regiones-orinoquia-amazonica.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh;  
+}
+.boton-comunidades-indigenas{
+     background-color: #A7553F;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+}
+.boton-comunidades-indigenas:hover {
+    background-color: #dda078;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.boton-comunidades-indigenas:active {
+    transform: scale(0.95);
+}
+.boton-comunidades-indigenas.mostrar {
+    display: inline-block;
+}
+@media (max-width: 768px) {
+    .contenedor-inicio h1 {
+        font-size: 50px;
+    }
+    
+    .contenedor-inicio h2 {
+        font-size: 24px;
+    }
+    
+    .avatar-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .botones-manual {
+        grid-template-columns: 1fr;
+    }
+}
